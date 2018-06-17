@@ -1,5 +1,3 @@
-<?php
-?>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">

@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <!--这个是子模板,继承自父模板,app.blade.php-->
 @extends('layouts.app')
 @section('title','首页')
