@@ -29,3 +29,10 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //------------------------------------------------------------//
+
+//创建个人页面资源控制器
+Route::resource('users','UsersController',['only'=>['show','update','edit']]);
+//以上的资源控制器,相当于以下的路由
+//Route::get('/users/{user}','UsersController@show')->name('users.show');
+//Route::get('/users/{user}/edit','UsersController@edit')->name('users.edit');
+//Route::path('/users/{user}','UsersController@update')->name('users.update');
