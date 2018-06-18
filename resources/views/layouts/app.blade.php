@@ -1,8 +1,4 @@
-<?php
-use Illuminate\Support\Facades\URL;
-?>
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -16,6 +12,7 @@ use Illuminate\Support\Facades\URL;
 <div id="app" class="{{ route_class() }}-page">
     @include('layouts._header')
     <div class="container">
+        @include('layouts._message')
         @yield('content')
     </div>
     @include('layouts._footer')
