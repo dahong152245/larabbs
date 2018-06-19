@@ -4,21 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
+   public function __construct()
+   {
+        //除了此处指定的动作以外，所有其他动作都必须登录用户才能访问，类似于黑名单的过滤机制, __construct当创建对象的时候回自动调用该方法
+       $this->middleware('auth',['except'=>['show']]);
+   }
+
     public function show(User $user)
     {
         return view('users.show',compact('user'));
     }
     public function edit(User $user)
     {
+        //authorize 方法，它可以被用于快速授权一个指定的行为，当无权限运行该行为时会抛出 HttpException
+        $this->authorize('update',$user);
         return view('users.edit',compact('user'));
     }
     public function update(UserRequest $request,ImageUploadHandler $uploader,User $user)
     {
+        $this->authorize('update',$user);
         //我们可直接通过 请求对象（Request） 来获取用户上传的文件 使用的dd的调试方法
         // 第一种方法
        //dd($request->file('avatar'));
