@@ -19,7 +19,8 @@ class TopicsTableSeeder extends Seeder
         $topics = factory(Topic::class)
             ->times(100)
             ->make()
-            ->each(function ($topic, $index)
+           // each方法相当于把得到的数据foreach循环出来 $user是数组的值$index是Key值，一般$index可以不用写 如果用不到
+            ->each(function ($topic, $index)//
             use ($user_ids, $category_ids, $faker)
             {
                 // 从用户 ID 数组中随机取出一个并赋值
