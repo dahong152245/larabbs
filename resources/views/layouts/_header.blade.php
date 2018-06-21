@@ -13,7 +13,13 @@
             </a>
         </div>
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!--leftSide of Navbar-->
             <ul class="nav navbar-nav">
+                <li class="active"><a href="{{route('topics.index')}}"></a></li>
+                <li><a href="{{route('categories.show',1)}}">分享</a></li>
+                <li><a href="{{route('categories.show',2)}}">教程</a></li>
+                <li><a href="{{route('categories.show',3)}}">问答</a></li>
+                <li><a href="{{route('categories.show',4)}}">公告</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             @guest
