@@ -14,11 +14,12 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request,Topic $topic)
 	{
 	    //paginate默认的分页类 解决N+1 问题 我们可以通过 Eloquent 提供的 预加载功能 来解决此问题
         //方法 with() 提前加载了我们后面需要用到的关联属性 user 和 category，并做了缓存。后面即使是在遍历数据时使用到这两个关联属性，数据已经被预加载并缓存，因此不会再产生多余的 SQL 查询
-        $topics = Topic::with('user','category')->paginate();
+        //$topics = Topic::with('user','category')->paginate();
+        $topics = $topic->withOrder($request->order)->paginate(20);
 		return view('topics.index', compact('topics'));
 	}
 
